@@ -11,7 +11,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\PersonneRepository")
  * @ORM\Table(name="personne")
  */
 class Personne
@@ -32,6 +32,12 @@ class Personne
      * @ORM\Column(type="string")
      */
     private $profession;
+
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isActive;
 
     /**
      * @return mixed
@@ -71,5 +77,21 @@ class Personne
     public function setProfession($profession)
     {
         $this->profession = $profession;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * @param mixed $isActive
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
     }
 }

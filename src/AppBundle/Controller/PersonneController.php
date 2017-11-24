@@ -32,7 +32,7 @@ class PersonneController extends Controller
     public function listAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $personnes = $em->getRepository('AppBundle:Personne')->findAll();
+        $personnes = $em->getRepository('AppBundle:Personne')->findAllPublished();
         return $this->render('AppBundle:Personne:list.html.twig',[
             'personnes'=>$personnes
         ]);
