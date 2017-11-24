@@ -29,6 +29,11 @@ class Personne
     private $name;
 
     /**
+     * @ORM\Column(type="string")
+     */
+    private $profession;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -50,5 +55,21 @@ class Personne
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProfession()
+    {
+        return $this->profession;
+    }
+
+    /**
+     * @param mixed $profession
+     */
+    public function setProfession($profession)
+    {
+        $this->profession = $profession;
     }
 }

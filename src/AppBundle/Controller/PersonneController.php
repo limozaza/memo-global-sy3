@@ -15,7 +15,8 @@ class PersonneController extends Controller
     public function indexAction()
     {
         $personne = new Personne();
-        $personne->setName("Sofia");
+        $personne->setName("Zakaria");
+        $personne->setProfession("Developpeur");
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($personne);
