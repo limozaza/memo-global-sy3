@@ -25,4 +25,16 @@ class PersonneController extends Controller
         return new Response('Personne cree!');
         //return $this->render('AppBundle:Personne:index.html.twig');
     }
+
+    /**
+     * @Route(path="/personnes",name="personnes_list")
+     */
+    public function listAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $personnes = $em->getRepository('AppBundle:Personne')->findAll();
+        return $this->render('AppBundle:Personne:list.html.twig',[
+            'personnes'=>$personnes
+        ]);
+    }
 }
