@@ -4,7 +4,11 @@
    <h1>Liste Personnes</h1>
     <ul>
         {% for personne in personnes %}
-            <li>{{ personne.name }} -- {{ personne.profession }}</li>
+            <li>
+                <a href="{{ path('personne_show',{'personneName':personne.name}) }}">
+                    {{ personne.name }}
+                </a> -- {{ personne.profession }}
+            </li>
         {% endfor %}
     </ul>
 

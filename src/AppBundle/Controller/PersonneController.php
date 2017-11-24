@@ -37,4 +37,21 @@ class PersonneController extends Controller
             'personnes'=>$personnes
         ]);
     }
+    /**
+     * @Route(path="/personne/{personneName}",name="personne_show")
+     */
+    public function showAction($personneName)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $personne = $em->getRepository('AppBundle:Personne')->findOneBy([
+            'name'=> $personneName
+        ]);
+        if(!$personne)
+        {
+            throw $this->createNotFoundException('No Personne found');
+        }
+        return $this->render('AppBundle:Personne:show.html.twig',[
+            'personne'=>$personne
+        ]);
+    }
 }
