@@ -34,10 +34,12 @@ class Personne
     private $profession;
 
 
+
+
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isActive;
+    private $isActive = true;
 
     /**
      * @return mixed

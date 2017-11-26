@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Personne;
+use AppBundle\Entity\Vehicule;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,14 +16,20 @@ class PersonneController extends Controller
     public function indexAction()
     {
         $personne = new Personne();
-        $personne->setName("Zakaria");
-        $personne->setProfession("Developpeur");
+        $personne->setName("Kassym");
+        $personne->setProfession("Bébé");
+
+        $vehicule = new Vehicule();
+        $vehicule->setName("A3 6V");
+        $vehicule->setMarque("AUDI");
+        $vehicule->setPersonne($personne);
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($personne);
+        $em->persist($vehicule);
         $em->flush();
 
-        return new Response('Personne cree!');
+        return new Response('<html><body>Personne cree!</body></html>');
         //return $this->render('AppBundle:Personne:index.html.twig');
     }
 
