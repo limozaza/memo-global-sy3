@@ -61,4 +61,12 @@ class PersonneController extends Controller
             'personne'=>$personne
         ]);
     }
+
+    /**
+     * @Route(path="/personne/{name}/vehicules",name="personne_show_vehicules")
+     */
+    public function getVehiculesAction(Personne $personne)
+    {
+        dump($personne);exit();
+    }
 }

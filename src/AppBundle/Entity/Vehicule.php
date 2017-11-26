@@ -37,6 +37,7 @@ class Vehicule
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Personne")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $personne;
 
