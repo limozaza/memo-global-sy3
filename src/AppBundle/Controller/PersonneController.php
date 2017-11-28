@@ -16,17 +16,23 @@ class PersonneController extends Controller
     public function indexAction()
     {
         $personne = new Personne();
-        $personne->setName("Kassym");
-        $personne->setProfession("Bébé");
+        $personne->setName("Zakaria");
+        $personne->setProfession("Developpeur");
 
-        $vehicule = new Vehicule();
-        $vehicule->setName("A3 6V");
-        $vehicule->setMarque("AUDI");
-        $vehicule->setPersonne($personne);
+        $vehicule1 = new Vehicule();
+        $vehicule1->setName("A3");
+        $vehicule1->setMarque("AUDI");
+        $vehicule1->setPersonne($personne);
+
+        $vehicule2 = new Vehicule();
+        $vehicule2->setName("Kia");
+        $vehicule2->setMarque("CEED");
+        $vehicule2->setPersonne($personne);
+
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($personne);
-        $em->persist($vehicule);
+        $em->persist($vehicule1);$em->persist($vehicule2);
         $em->flush();
 
         return new Response('<html><body>Personne cree!</body></html>');
@@ -67,6 +73,9 @@ class PersonneController extends Controller
      */
     public function getVehiculesAction(Personne $personne)
     {
-        dump($personne);exit();
+        foreach ( $personne->getVehicules() as $item) {
+            dump($item);
+        }
+        exit();
     }
 }

@@ -33,13 +33,16 @@ class Personne
      */
     private $profession;
 
-
-
-
     /**
      * @ORM\Column(type="boolean")
      */
     private $isActive = true;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Vehicule", mappedBy="personne")
+     * @ORM\OrderBy({"name"="ASC"})
+     */
+    private $vehicules;
 
     /**
      * @return mixed
@@ -95,5 +98,21 @@ class Personne
     public function setIsActive($isActive)
     {
         $this->isActive = $isActive;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVehicules()
+    {
+        return $this->vehicules;
+    }
+
+    /**
+     * @param mixed $vehicules
+     */
+    public function setVehicules($vehicules)
+    {
+        $this->vehicules = $vehicules;
     }
 }

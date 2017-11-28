@@ -36,7 +36,7 @@ class Vehicule
     private $marque;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Personne")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Personne",inversedBy="vehicules")
      * @ORM\JoinColumn(nullable=false)
      */
     private $personne;

@@ -2,6 +2,12 @@
 
 {% block body %}
    <h1>{{ personne.name }}  {{ personne.profession }}</h1>
+   <ul>
+       {% for vehicule in personne.vehicules %}
+           <li>{{ vehicule.name }}</li>
+       {% endfor %}
+   </ul>
+
 
 {% endblock %}
 
