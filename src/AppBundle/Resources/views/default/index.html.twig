@@ -2,6 +2,11 @@
 
 {% block body %}
    <h1>Boufares KNP </h1>
+    {% if isSpam %}
+        <p>C'est un SPAM</p>
+    {% else %}
+       <p>Ce n'est pas un SPAM</p>
+    {% endif %}
 {% endblock %}
 
 {% block stylesheets %}

@@ -13,6 +13,8 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return $this->render('AppBundle:default:index.html.twig');
+        $isSpam = $this->get('app.spam');
+        $a = $isSpam->isSpam("Bonjour Monsieur");
+        return $this->render('AppBundle:default:index.html.twig',['isSpam' => $a]);
     }
 }
