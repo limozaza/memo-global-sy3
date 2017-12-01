@@ -1,13 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-   <h1>Boufares KNP </h1>
-    {% if isSpam %}
-        <p>C'est un SPAM</p>
-    {% else %}
-       <p>Ce n'est pas un SPAM</p>
-    {% endif %}
+    <div class="container">
+        <h1>Boufares KNP </h1>
+        {% if isSpam %}
+            <p>C'est un SPAM</p>
+        {% else %}
+            <p>Ce n'est pas un SPAM</p>
+        {% endif %}
+    </div>
 {% endblock %}
 
 {% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
 {% endblock %}
