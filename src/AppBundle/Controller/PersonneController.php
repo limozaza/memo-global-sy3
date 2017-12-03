@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Personne;
 use AppBundle\Entity\Vehicule;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,7 +16,9 @@ class PersonneController extends Controller
      */
     public function indexAction()
     {
-        $personne = new Personne();
+
+
+        /*$personne = new Personne();
         $personne->setName("Zakaria");
         $personne->setProfession("Developpeur");
 
@@ -33,17 +36,22 @@ class PersonneController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->persist($personne);
         $em->persist($vehicule1);$em->persist($vehicule2);
-        $em->flush();
+        $em->flush();*/
 
         return new Response('<html><body>Personne cree!</body></html>');
         //return $this->render('AppBundle:Personne:index.html.twig');
     }
 
     /**
+     * @Security("is_granted('ROLE_ADMIN')")
      * @Route(path="/personnes",name="personnes_list")
      */
     public function listAction()
     {
+        /*
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+            throw $this->createAccessDeniedException('GET OUT!');
+        }*/
         $em = $this->getDoctrine()->getManager();
         $personnes = $em->getRepository('AppBundle:Personne')->findAllPublished();
         return $this->render('AppBundle:Personne:list.html.twig',[

@@ -1,8 +1,12 @@
 {% extends 'base.html.twig' %}
-
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
 {% block body %}
    <h1>Boufares KNP </h1>
 {% endblock %}
 
-{% block stylesheets %}
+
+{% block javascripts %}
+    {{ parent() }}
 {% endblock %}

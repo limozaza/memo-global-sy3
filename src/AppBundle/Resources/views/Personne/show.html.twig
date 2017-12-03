@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
-
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
 {% block body %}
    <h1>{{ personne.name }}  {{ personne.profession }}</h1>
    <ul>
@@ -11,5 +13,7 @@
 
 {% endblock %}
 
-{% block stylesheets %}
+
+{% block javascripts %}
+    {{ parent() }}
 {% endblock %}
