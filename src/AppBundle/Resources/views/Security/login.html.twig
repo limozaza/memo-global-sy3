@@ -17,6 +17,8 @@
                     {{ form_row(form._username) }}
                     {{ form_row(form._password) }}
                     <button type="submit" class="btn btn-success" formnovalidate>login</button>
+                    &nbsp;
+                    <a href="{{ path('user_register') }}">S'inscrire</a>
                 {{ form_end(form) }}
             </div>
         </div>

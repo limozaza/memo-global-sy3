@@ -39,4 +39,5 @@ class SecurityController extends Controller
     {
         throw new \Exception("On va pas arriver jusqu au la");
     }
+
 }
