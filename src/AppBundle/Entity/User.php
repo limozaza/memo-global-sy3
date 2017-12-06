@@ -45,7 +45,7 @@ class User implements UserInterface
     private $roles = [];
 
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"Registration"})
      */
     private $plainPassword;
 
