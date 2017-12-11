@@ -5,13 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Identite
+ * Vehicule
  *
- * @ORM\Table(name="identite")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\IdentiteRepository")
- * @ORM\HasLifecycleCallbacks()
+ * @ORM\Table(name="vehicule")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\VehiculeRepository")
  */
-class Identite
+class Vehicule
 {
     /**
      * @var int
@@ -32,9 +31,15 @@ class Identite
     /**
      * @var string
      *
-     * @ORM\Column(name="phone", type="string", length=255)
+     * @ORM\Column(name="marque", type="string", length=255)
      */
-    private $phone;
+    private $marque;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Personne",inversedBy="vehicules")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $personne;
 
 
     /**
@@ -52,7 +57,7 @@ class Identite
      *
      * @param string $name
      *
-     * @return Identite
+     * @return Vehicule
      */
     public function setName($name)
     {
@@ -72,49 +77,43 @@ class Identite
     }
 
     /**
-     * Set phone
+     * Set marque
      *
-     * @param string $phone
+     * @param string $marque
      *
-     * @return Identite
+     * @return Vehicule
      */
-    public function setPhone($phone)
+    public function setMarque($marque)
     {
-        $this->phone = $phone;
+        $this->marque = $marque;
 
         return $this;
     }
 
     /**
-     * Get phone
+     * Get marque
      *
      * @return string
      */
-    public function getPhone()
+    public function getMarque()
     {
-        return $this->phone;
+        return $this->marque;
     }
-
 
     /**
-     * @ORM\PrePersist()
-     * @ORM\PreUpdate()
+     * @return mixed
      */
-    public function formatPhone()
+    public function getPersonne()
     {
-        $this->setPhone($this->traitementPhone($this->getPhone()));
+        return $this->personne;
     }
 
-    private function traitementPhone($tel)
+    /**
+     * @param mixed $personne
+     */
+    public function setPersonne(Personne $personne)
     {
-        $tel = str_split($tel);
-        $tab = [];
-
-        for($i=0;$i<count($tel);$i = $i+2)
-        {
-            $tab[] = $tel[$i].$tel[$i+1];
-        }
-
-        return implode(' ',$tab);
+        $this->personne = $personne;
     }
 }
+

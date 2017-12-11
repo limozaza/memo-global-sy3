@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Vehicule
+ * Article
  *
- * @ORM\Table(name="vehicule")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\VehiculeRepository")
+ * @ORM\Table(name="article")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ArticleRepository")
  */
-class Vehicule
+class Article
 {
     /**
      * @var int
@@ -29,17 +29,24 @@ class Vehicule
     private $name;
 
     /**
-     * @var string
+     * @var \DateTime
      *
-     * @ORM\Column(name="marque", type="string", length=255)
+     * @ORM\Column(name="date", type="datetime")
      */
-    private $marque;
+    private $date;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Personne",inversedBy="vehicules")
+     * @var bool
+     *
+     * @ORM\Column(name="publication", type="boolean")
+     */
+    private $publication;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Article")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $personne;
+    private $categorie;
 
 
     /**
@@ -57,7 +64,7 @@ class Vehicule
      *
      * @param string $name
      *
-     * @return Vehicule
+     * @return Article
      */
     public function setName($name)
     {
@@ -77,42 +84,51 @@ class Vehicule
     }
 
     /**
-     * Set marque
+     * Set date
      *
-     * @param string $marque
+     * @param \DateTime $date
      *
-     * @return Vehicule
+     * @return Article
      */
-    public function setMarque($marque)
+    public function setDate($date)
     {
-        $this->marque = $marque;
+        $this->date = $date;
 
         return $this;
     }
 
     /**
-     * Get marque
+     * Get date
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getMarque()
+    public function getDate()
     {
-        return $this->marque;
+        return $this->date;
     }
 
     /**
-     * @return mixed
+     * Set publication
+     *
+     * @param boolean $publication
+     *
+     * @return Article
      */
-    public function getPersonne()
+    public function setPublication($publication)
     {
-        return $this->personne;
+        $this->publication = $publication;
+
+        return $this;
     }
 
     /**
-     * @param mixed $personne
+     * Get publication
+     *
+     * @return bool
      */
-    public function setPersonne(Personne $personne)
+    public function getPublication()
     {
-        $this->personne = $personne;
+        return $this->publication;
     }
 }
+
