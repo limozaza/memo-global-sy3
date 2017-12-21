@@ -40,10 +40,10 @@ class Article
      *
      * @ORM\Column(name="publication", type="boolean")
      */
-    private $publication = true;
+    private $publication = false;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Article")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Categorie")
      * @ORM\JoinColumn(nullable=false)
      */
     private $categorie;
@@ -134,11 +134,11 @@ class Article
     /**
      * Set categorie
      *
-     * @param \AppBundle\Entity\Article $categorie
+     * @param \AppBundle\Entity\Categorie $categorie
      *
      * @return Article
      */
-    public function setCategorie(\AppBundle\Entity\Article $categorie)
+    public function setCategorie(\AppBundle\Entity\Categorie $categorie)
     {
         $this->categorie = $categorie;
 
@@ -148,7 +148,7 @@ class Article
     /**
      * Get categorie
      *
-     * @return \AppBundle\Entity\Article
+     * @return \AppBundle\Entity\Categorie
      */
     public function getCategorie()
     {

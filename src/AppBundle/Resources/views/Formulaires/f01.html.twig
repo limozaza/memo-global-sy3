@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <h1>Boufares Formulaires f01</h1>
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button type="submit" class="btn btn-success" formnovalidate>Ajouter</button>
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

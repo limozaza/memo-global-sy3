@@ -52,7 +52,7 @@ class TestClientParPays
     /**
      * @var string
      *
-     * @ORM\Column(name="nomMarital", type="string", length=255)
+     * @ORM\Column(name="pays", type="string", length=255)
      * @Assert\Choice({TestClientParPays::COUNTRY_FR, TestClientParPays::COUNTRY_EN})
      */
     private $pays;
