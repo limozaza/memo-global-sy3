@@ -21,6 +21,16 @@ class DefaultController extends Controller
     }
 
 
+
+    /**
+     * @Route("/react01", name="react01")
+     */
+    public function react01Action(Request $request)
+    {
+        return $this->render('AppBundle:default:react01.html.twig');
+    }
+
+
     /**
      * @Route("/form", name="form")
      */

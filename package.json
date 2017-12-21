@@ -1,0 +1,32 @@
+{
+  "name": "knp_de_aaz",
+  "version": "1.0.0",
+  "description": "knpDeAaZ ========",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/limozaza/memo-global-sy3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/limozaza/memo-global-sy3/issues"
+  },
+  "homepage": "https://github.com/limozaza/memo-global-sy3#readme",
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.17.0",
+    "babel-preset-react": "^6.24.1",
+    "node-sass": "^4.7.2",
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "sass-loader": "^6.0.6",
+    "webpack-notifier": "^1.5.0"
+  }
+}
