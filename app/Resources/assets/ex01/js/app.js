@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import App from './components/App';
+
 import '../css/app.scss';
 
-ReactDOM.render(<h1>Bonjour Zakaria</h1>, document.getElementById("a01"));
+ReactDOM.render(<App/>, document.getElementById("a01"));
