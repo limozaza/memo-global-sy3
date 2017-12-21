@@ -115,4 +115,35 @@ class Personne
     {
         $this->vehicules = $vehicules;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->vehicules = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add vehicule
+     *
+     * @param \AppBundle\Entity\Vehicule $vehicule
+     *
+     * @return Personne
+     */
+    public function addVehicule(\AppBundle\Entity\Vehicule $vehicule)
+    {
+        $this->vehicules[] = $vehicule;
+
+        return $this;
+    }
+
+    /**
+     * Remove vehicule
+     *
+     * @param \AppBundle\Entity\Vehicule $vehicule
+     */
+    public function removeVehicule(\AppBundle\Entity\Vehicule $vehicule)
+    {
+        $this->vehicules->removeElement($vehicule);
+    }
 }

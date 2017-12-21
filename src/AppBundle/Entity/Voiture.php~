@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Vehicule
+ * Voiture
  *
- * @ORM\Table(name="vehicule")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\VehiculeRepository")
+ * @ORM\Table(name="voiture")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\VoitureRepository")
  */
-class Vehicule
+class Voiture
 {
     /**
      * @var int
@@ -36,10 +36,11 @@ class Vehicule
     private $marque;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Personne",inversedBy="vehicules")
-     * @ORM\JoinColumn(nullable=false)
+     * @var string
+     *
+     * @ORM\Column(name="prix", type="string", length=255)
      */
-    private $personne;
+    private $prix;
 
 
     /**
@@ -57,7 +58,7 @@ class Vehicule
      *
      * @param string $name
      *
-     * @return Vehicule
+     * @return Voiture
      */
     public function setName($name)
     {
@@ -81,7 +82,7 @@ class Vehicule
      *
      * @param string $marque
      *
-     * @return Vehicule
+     * @return Voiture
      */
     public function setMarque($marque)
     {
@@ -101,18 +102,27 @@ class Vehicule
     }
 
     /**
-     * @return mixed
+     * Set prix
+     *
+     * @param string $prix
+     *
+     * @return Voiture
      */
-    public function getPersonne()
+    public function setPrix($prix)
     {
-        return $this->personne;
+        $this->prix = $prix;
+
+        return $this;
     }
 
     /**
-     * @param mixed $personne
+     * Get prix
+     *
+     * @return string
      */
-    public function setPersonne(Personne $personne)
+    public function getPrix()
     {
-        $this->personne = $personne;
+        return $this->prix;
     }
 }
+

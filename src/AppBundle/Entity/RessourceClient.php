@@ -1,0 +1,96 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * RessourceClient
+ *
+ * @ORM\Table(name="ressource_client")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\RessourceClientRepository")
+ */
+class RessourceClient
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="ressource_mensuelle", type="float")
+     */
+    private $ressourceMensuelle;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="charge", type="float")
+     */
+    private $charge;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set ressourceMensuelle
+     *
+     * @param float $ressourceMensuelle
+     *
+     * @return RessourceClient
+     */
+    public function setRessourceMensuelle($ressourceMensuelle)
+    {
+        $this->ressourceMensuelle = $ressourceMensuelle;
+
+        return $this;
+    }
+
+    /**
+     * Get ressourceMensuelle
+     *
+     * @return float
+     */
+    public function getRessourceMensuelle()
+    {
+        return $this->ressourceMensuelle;
+    }
+
+    /**
+     * Set charge
+     *
+     * @param float $charge
+     *
+     * @return RessourceClient
+     */
+    public function setCharge($charge)
+    {
+        $this->charge = $charge;
+
+        return $this;
+    }
+
+    /**
+     * Get charge
+     *
+     * @return float
+     */
+    public function getCharge()
+    {
+        return $this->charge;
+    }
+}

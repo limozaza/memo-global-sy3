@@ -3,19 +3,15 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * TestClientParPays
+ * ClientCredit
  *
- * @ORM\Table(name="test_client_par_pays")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\TestClientParPaysRepository")
+ * @ORM\Table(name="client_credit")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ClientCreditRepository")
  */
-class TestClientParPays
+class ClientCredit
 {
-    const COUNTRY_FR = 'fr';
-    const COUNTRY_EN = 'en';
-
     /**
      * @var int
      *
@@ -29,7 +25,6 @@ class TestClientParPays
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255)
-     * @Assert\NotBlank(groups={"fr","en"})
      */
     private $nom;
 
@@ -37,26 +32,33 @@ class TestClientParPays
      * @var string
      *
      * @ORM\Column(name="prenom", type="string", length=255)
-     * @Assert\NotBlank(groups={"fr","en"})
      */
     private $prenom;
 
     /**
-     * @var string
+     * @var \DateTime
      *
-     * @ORM\Column(name="nomMarital", type="string", length=255)
-     * @Assert\NotBlank(groups={"fr"})
+     * @ORM\Column(name="date_naissance", type="date")
      */
-    private $nomMarital;
+    private $dateNaissance;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="pays", type="string", length=255)
-     * @Assert\Choice({TestClientParPays::COUNTRY_FR, TestClientParPays::COUNTRY_EN})
+     * @ORM\Column(name="profession", type="string", length=255)
      */
-    private $pays;
+    private $profession;
 
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\ConjoinClientCredit")
+     */
+    private $conjoinClientCredit;
+
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\RessourceClient",cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $ressourceClient;
 
 
     /**
@@ -74,7 +76,7 @@ class TestClientParPays
      *
      * @param string $nom
      *
-     * @return TestClientParPays
+     * @return ClientCredit
      */
     public function setNom($nom)
     {
@@ -98,7 +100,7 @@ class TestClientParPays
      *
      * @param string $prenom
      *
-     * @return TestClientParPays
+     * @return ClientCredit
      */
     public function setPrenom($prenom)
     {
@@ -118,42 +120,51 @@ class TestClientParPays
     }
 
     /**
-     * Set nomMarital
+     * Set dateNaissance
      *
-     * @param string $nomMarital
+     * @param \DateTime $dateNaissance
      *
-     * @return TestClientParPays
+     * @return ClientCredit
      */
-    public function setNomMarital($nomMarital)
+    public function setDateNaissance($dateNaissance)
     {
-        $this->nomMarital = $nomMarital;
+        $this->dateNaissance = $dateNaissance;
 
         return $this;
     }
 
     /**
-     * Get nomMarital
+     * Get dateNaissance
+     *
+     * @return \DateTime
+     */
+    public function getDateNaissance()
+    {
+        return $this->dateNaissance;
+    }
+
+    /**
+     * Set profession
+     *
+     * @param string $profession
+     *
+     * @return ClientCredit
+     */
+    public function setProfession($profession)
+    {
+        $this->profession = $profession;
+
+        return $this;
+    }
+
+    /**
+     * Get profession
      *
      * @return string
      */
-    public function getNomMarital()
+    public function getProfession()
     {
-        return $this->nomMarital;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPays()
-    {
-        return $this->pays;
-    }
-
-    /**
-     * @param string $pays
-     */
-    public function setPays($pays)
-    {
-        $this->pays = $pays;
+        return $this->profession;
     }
 }
+
