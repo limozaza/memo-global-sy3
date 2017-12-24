@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 
 import {bindActionCreators} from 'redux';
 import {getCategories} from '../actions/index';
+import {getCategorie} from '../actions/index';
 
 
 class CategorieList extends Component{
@@ -40,8 +41,8 @@ class CategorieList extends Component{
         this.setState(
             {
                 selectedCategorie: e.target.value
-            }
-            )
+            })
+        this.props.getCategorie(e.target.value)
     };
 
     render(){
@@ -61,6 +62,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         getCategories: bindActionCreators(getCategories, dispatch),
+        getCategorie: bindActionCreators(getCategorie, dispatch),
     }
 };
 

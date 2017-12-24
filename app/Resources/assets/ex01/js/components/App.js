@@ -4,6 +4,7 @@ import UserList from '../containers/user_list';
 import UserDetail from '../containers/user_detail';
 
 import CategorieList from '../containers/categorie_list';
+import ArticleList from '../containers/article_list_by_categorie';
 
 
 class App extends Component{
@@ -16,6 +17,7 @@ class App extends Component{
                 <UserDetail />
                 <hr/>
                 <CategorieList defaultCategorie="Sciences"/>
+                <ArticleList defaultCategorie="Sciences"/>
             </div>
         );
     }
