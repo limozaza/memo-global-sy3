@@ -4,8 +4,10 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Identite;
 use AppBundle\Form\IdentiteType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
@@ -28,6 +30,28 @@ class DefaultController extends Controller
     public function react01Action(Request $request)
     {
         return $this->render('AppBundle:default:react01.html.twig');
+    }
+
+    /***********************
+     * React/Redux appel ajax
+     **********************/
+    /**
+     * @Route("/react01/aja", name="react01_ajax", options={"expose"=true})
+     * @Method({"GET"})
+     */
+    public function react01AjaxAction(Request $request){
+        $em = $this->getDoctrine()->getManager();
+
+        $categories = $em->getRepository('AppBundle:Categorie')->findAll();
+
+        $formatted = [];
+        foreach ($categories as $categorie) {
+            $formatted[] = [
+                'id' => $categorie->getId(),
+                'name' => $categorie->getName(),
+            ];
+        }
+        return new JsonResponse($formatted);
     }
 
 

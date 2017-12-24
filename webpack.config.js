@@ -27,6 +27,14 @@ Encore
 
     .enableReactPreset()
 
+    .configureBabel(function(babelConfig) {
+        // add additional presets
+        //babelConfig.presets.push('es2015');
+        babelConfig.plugins.push('transform-class-properties');
+        // no plugins are added by default, but you can add some
+        // babelConfig.plugins.push('styled-jsx/babel');
+    })
+
 // create hashed filenames (e.g. app.abc123.css)
 // .enableVersioning()
 ;

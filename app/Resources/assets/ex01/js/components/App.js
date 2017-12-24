@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 
 import UserList from '../containers/user_list';
-import UserDetail from '../containers/user_detail'
+import UserDetail from '../containers/user_detail';
+
+import CategorieList from '../containers/categorie_list';
 
 
 class App extends Component{
@@ -12,6 +14,8 @@ class App extends Component{
                 <h1>Boufares Zakaria</h1>
                 <UserList />
                 <UserDetail />
+                <hr/>
+                <CategorieList defaultCategorie="Sciences"/>
             </div>
         );
     }
