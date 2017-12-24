@@ -1,3 +1,11 @@
-/**
- * Created by zakaria on 22/12/17.
- */
+export const USER_SELECTED = 'USER_SELECTED'
+
+export const selectUser = (user) => {
+    console.log("selected ", user)
+
+    return {
+        type: USER_SELECTED,
+        payload: user
+    }
+}
+
